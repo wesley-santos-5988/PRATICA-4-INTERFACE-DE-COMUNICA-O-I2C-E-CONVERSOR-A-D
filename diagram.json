@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "UNIVASF - BitDogLab",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "pico-w" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick",
+      "top": 30,
+      "left": -180,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": 30,
+      "left": 160,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+
+    [ "pico:3V3", "joystick:VCC", "red", [] ],
+    [ "pico:GND", "joystick:GND", "black", [] ],
+    [ "pico:GP26", "joystick:HORZ", "green", [] ],
+
+    [ "pico:3V3", "oled:VCC", "red", [] ],
+    [ "pico:GND", "oled:GND", "black", [] ],
+    [ "pico:GP14", "oled:SDA", "blue", [] ],
+    [ "pico:GP15", "oled:SCL", "yellow", [] ]
+  ]
+}
